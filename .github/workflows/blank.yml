@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     
     steps:
       # Step 1: Checkout the code
@@ -41,5 +41,5 @@ jobs:
             --name my-container-app \
             --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
             --environment ${{ secrets.AZURE_CONTAINER_ENVIRONMENT }} \
-            --image ${{ secrets.AZURE_CONTAINER_REGISTRY_NAME }}.azurecr.io/myapp:${{ github.sha }} \
+            --image ${{ secrets.AZURE_CONTAINER_REGISTRY_NAME }}.azurecr.io/testimage:${{ github.sha }} \
             --ingress external --target-port 80
